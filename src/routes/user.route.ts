@@ -1,9 +1,10 @@
 import * as express from "express";
 import UserController from "../controllers/users/user.controller";
+import { checkJwt } from "../middleware/jwtMiddleware";
 
 const router = express.Router();
 
-router.get("/", async (_req, res) => {
+router.get("/", [checkJwt], async (_req, res) => {
     const controller = new UserController();
     const response = await controller.getAllUsers();
     return res.send(response);
@@ -15,10 +16,10 @@ router.get("/", async (_req, res) => {
     return res.send(response);
   });
   
-  router.get("/:id", async (req, res) => {
+  router.get("/:id",[checkJwt],  async (req, res) => {
     const controller = new UserController();
     const response = await controller.getUserById(parseInt(req.params.id));
-    if (!response) res.status(404).send({message: "No comment found"})
+    if (!response) res.status(404).send({message: "No user found"})
     return res.send(response);
   });
   
