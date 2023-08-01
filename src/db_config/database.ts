@@ -1,5 +1,3 @@
-require('dotenv').config({path: '../../.env'});
-
 import { DataSource } from "typeorm";
 import { User } from "../entity/User";
 import { Scores } from "../entity/Scores";
