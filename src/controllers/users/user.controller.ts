@@ -1,5 +1,4 @@
 import { Get, Route, Tags,  Post, Body, Path } from "tsoa";
-import { User } from "../../entity/User";
 import { getAllUsers, getUserById, createUser } from "../../repository/users/user.repository";
 
 @Route("users")

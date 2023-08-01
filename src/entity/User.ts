@@ -1,7 +1,7 @@
 import { Entity, Column, OneToMany, JoinColumn, BeforeInsert } from "typeorm"
 import { Scores } from "./Scores";
 import { BaseModelEntity } from "./base.model.entity";
-import * as bcrypt from "bcrypt";
+import { hashingPass } from "../utils/bcrypt.helper";
 
 @Entity('users')
 export class User extends BaseModelEntity {
@@ -25,6 +25,6 @@ export class User extends BaseModelEntity {
 
     @BeforeInsert()
     async hashingPassword() {
-        this.password = await bcrypt.hash(this.password, 10);
+        this.password = await hashingPass(this.password);
     }
 }

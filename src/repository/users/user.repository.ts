@@ -10,16 +10,30 @@ export const getAllUsers = async () => {
 
 export const createUser = async (payload: IUserPayload) => {
     const userRepository = InitAppSource.getRepositoryEntityInstance(User);
-    const userEntity = new User();
-    return userRepository.save({
+    const userEntity = new User(); 
+    const userCreated = userRepository.create({
         ...userEntity,
         ...payload
     });
+
+    const userInserted = await userRepository.save(userCreated);
+    return await getUserById(userInserted.id)
 }
 
 export const getUserById = async (id: number) => {
     const userRepository = InitAppSource.getRepositoryEntityInstance(User);
-    const user = await userRepository.findBy({id: id})
+    const user = await userRepository.findOne({
+        where:{id},
+        select:[
+        'id', 
+        'email',
+        'lastName',
+        'firstName',
+        'createdDate',
+        'updatedDated'
+        ]
+    });
+    
     if (!user) return null
     return user
 }
