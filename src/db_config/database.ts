@@ -8,7 +8,7 @@ const config =  new DataSource({
     type: "postgres",
     ssl: true,
     synchronize: true,
-    url: '',
+    url: process.env.DB_URL,
     entities: [User, Scores],
 });
 

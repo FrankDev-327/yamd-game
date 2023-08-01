@@ -1,7 +1,7 @@
 import { Entity, Column, OneToMany, JoinColumn, BeforeInsert } from "typeorm"
 import { Scores } from "./Scores";
 import { BaseModelEntity } from "./base.model.entity";
-import { hashingPass } from "../utils/bcrypt.helper";
+import { hashingPass } from "../utils/helper";
 
 @Entity('users')
 export class User extends BaseModelEntity {

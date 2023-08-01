@@ -1,5 +1,5 @@
 import { User } from "../../entity/User";
-import { comparingPassword, validateEmailFormat } from "../../utils/bcrypt.helper";
+import { comparingPassword, validateEmailFormat } from "../../utils/helper";
 import { InitAppSource } from "../../init-db/init.db";
 import { IAuthPayload } from "../../interfaces/auth.interface";
 import { generateToken } from "../../jwt-token/encode.payload";
