@@ -11,7 +11,10 @@ export class User extends BaseModelEntity {
     @Column({nullable: true})
     lastName: string
 
-    @Column({nullable: true})
+    @Column({
+        unique: true,
+        nullable: true
+    })
     email: string
 
     @Column({nullable: true})
