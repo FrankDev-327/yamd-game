@@ -1,16 +1,16 @@
 import { Get, Route, Tags,  Post, Body, Path } from "tsoa";
-import { getAllScores, createScore } from "../../repository/scores/score.repository";
+import { getAllS, create } from "../../services/score.service";
 
 @Route("scores")
 @Tags("Score")
 export default class ScoreController {
     @Get("/")
     async getAllScores() {
-        return await getAllScores();
+        return await getAllS();
     }
 
     @Post()
     async createUser(@Body() body) {
-        return await createScore(body);
+        return await create(body);
     }
 }

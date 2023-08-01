@@ -3,8 +3,6 @@ import SocketInterface from "../interfaces/socket.interface";
 
 export class GameSocket implements SocketInterface {
     handleConnection(socket: Socket): void {
-        console.log('enter here to being connected');
-        
         socket.emit('ping', 'Hi! I am a live socket connection');
         /* throw new Error("Method not implemented."); */
     }

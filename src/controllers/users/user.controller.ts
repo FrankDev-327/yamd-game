@@ -1,22 +1,22 @@
 import { Get, Route, Tags,  Post, Body, Path } from "tsoa";
-import { getAllUsers, getUserById, createUser } from "../../repository/users/user.repository";
+import { getAll, getById, create } from "../../services/user.service";
 
 @Route("users")
 @Tags("User")
 export default class UserController {
     @Get("/")
     async getAllUsers() {
-        return await getAllUsers();
+        return await getAll();
     }
 
     @Get("/:id")
     async getUserById(@Path() id: number) {
-        return await getUserById(id);
+        return await getById(id);
     }
 
     @Post()
     async createUser(@Body() body) {
-        return await createUser(body);
+        return await create(body);
     }
 
 }
