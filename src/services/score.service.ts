@@ -2,7 +2,7 @@ import { IScorePayload } from "../interfaces/score.interface";
 import { getById } from "./user.service";
 import { getAllScores, createScore } from "../repository/scores/score.repository";
 
-export const getAllS = async () => {
+export const getAll = async () => {
     return await getAllScores();
 }
 

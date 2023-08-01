@@ -5,7 +5,7 @@ import { InitAppSource } from "../../init-db/init.db";
 
 export const getAllUsers = async () => {
     const userRepository = InitAppSource.getRepositoryEntityInstance(User);
-    return userRepository.find();
+    return await userRepository.find();
 }
 
 export const createUser = async (payload: IUserPayload) => {
