@@ -1,4 +1,4 @@
-import { Entity, ManyToMany,Column, JoinColumn } from "typeorm"
+import { Entity, Column, JoinColumn, ManyToOne } from "typeorm"
 import { User } from "./User";
 import { BaseModelEntity } from "./base.model.entity";
 
@@ -12,7 +12,7 @@ export class Scores extends BaseModelEntity {
     })
     category: string;
 
-    @ManyToMany(() => User, (user) => user.scores, {
+    @ManyToOne(() => User, (user) => user.scores, {
         nullable: true
     })
     @JoinColumn({name: 'user_id'})

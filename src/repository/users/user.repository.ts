@@ -20,6 +20,11 @@ export const createUser = async (payload: IUserPayload) => {
     return await getUserById(userInserted.id)
 }
 
+export const updateUser = async (user:User) => {
+    const userRepository = InitAppSource.getRepositoryEntityInstance(User);
+    return await userRepository.update(user.id, {...user});
+}
+
 export const getUserById = async (id: number) => {
     const userRepository = InitAppSource.getRepositoryEntityInstance(User);
     const user = await userRepository.findOne({
@@ -31,7 +36,8 @@ export const getUserById = async (id: number) => {
         'firstName',
         'createdDate',
         'updatedDated'
-        ]
+        ],
+        relations: ['scores']
     });
     
     if (!user) return null

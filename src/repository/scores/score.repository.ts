@@ -7,13 +7,15 @@ export const getAllScores = async () => {
     return scoreRepository.find();
 }
 
-
-export const createScore = async (payload: IScorePayload) => {
+export const createScore = async (payload: IScorePayload, user) => {
     const scoreRepository = InitAppSource.getRepositoryEntityInstance(Scores);
     const scoreEntity = new Scores(); 
     const scoreCreated = scoreRepository.create({
         ...scoreEntity,
         ...payload
     });
-    return scoreRepository.save(scoreCreated);
+
+    scoreCreated.user = user;
+    const scoreSaved = await scoreRepository.save(scoreCreated);
+    return scoreSaved;
 }
