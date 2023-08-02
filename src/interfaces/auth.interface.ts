@@ -1,4 +1,4 @@
 export interface IAuthPayload {
-    email: string;
+    nickName: string;
     password: string;
 }

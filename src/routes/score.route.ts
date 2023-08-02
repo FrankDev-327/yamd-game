@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/", [checkJwt], async (_req, res) => {
     const controller = new ScoreController();
-    const response = await controller.getAllScores();
+    const response = await controller.getAlls();
     return res.send(response);
   });
   

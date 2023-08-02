@@ -6,16 +6,7 @@ import { hashingPass } from "../utils/helper";
 @Entity('users')
 export class User extends BaseModelEntity {
     @Column({nullable: true})
-    firstName: string
-
-    @Column({nullable: true})
-    lastName: string
-
-    @Column({
-        unique: true,
-        nullable: true
-    })
-    email: string
+    nickName: string
 
     @Column({nullable: true})
     password: string

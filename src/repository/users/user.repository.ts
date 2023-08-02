@@ -31,9 +31,7 @@ export const getUserById = async (id: number) => {
         where:{id},
         select:[
         'id', 
-        'email',
-        'lastName',
-        'firstName',
+        'nickName',
         'createdDate',
         'updatedDated'
         ],

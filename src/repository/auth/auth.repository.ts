@@ -1,19 +1,14 @@
 import { User } from "../../entity/User";
-import { comparingPassword, validateEmailFormat } from "../../utils/helper";
+import { comparingPassword } from "../../utils/helper";
 import { InitAppSource } from "../../init-db/init.db";
 import { IAuthPayload } from "../../interfaces/auth.interface";
 import { generateToken } from "../../jwt-token/encode.payload";
 
 export const logIn = async (payload: IAuthPayload) => {
     const authRepository = InitAppSource.getRepositoryEntityInstance(User);
-    const isValidEmailFormat = validateEmailFormat(payload.email);    
-
-    if (!isValidEmailFormat) {
-        return { error: 'Invalid email format' };
-    }
 
     const user = await authRepository.findOne({
-        where:{email: payload.email}
+        where:{nickName: payload.nickName}
     });
     
     if (!user) {
