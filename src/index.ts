@@ -19,17 +19,16 @@ app.use(morgan("tiny"));
 app.use(express.static("public"));
 
 app.use(
-    "/docs",
-    swaggerUi.serve,
-    swaggerUi.setup(undefined, {
-      swaggerOptions: {
-        url: "/swagger.json",
-      },
-    })
-  );
+  "/docs",
+  swaggerUi.serve,
+  swaggerUi.setup(undefined, {
+    swaggerOptions: {
+      url: "/swagger.json",
+    },
+  })
+);
   
 app.use(Router);
-
 app.get( "/test", (req: Request, res: Response ) => {
     res.send( "Hello world!" );
 });
