@@ -1,7 +1,6 @@
 import { IUserPayload } from "../interfaces/user.interface";
 import { getAllUsers, createUser, getUserById, getUserScores } from "../repository/users/user.repository";
 
-
 export const getAll = async () => {
     return await getAllUsers();
 }

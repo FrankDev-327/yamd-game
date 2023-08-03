@@ -125,26 +125,19 @@
                 },
                 data: JSON.stringify(formData),
                 success: function(response) {
-                    //TODO I had to do it like this because 
-                    //I could not insert the entire array of object 
-                    // into setItem and get them back with getItem
                     localStorage.setItem('player_1', JSON.stringify({
-                            userId:response.users[0].id,
-                            nickName: response.users[0].nickName
+                            userId:response[0].id,
+                            nickName: response[0].nickName
                         })
                     );
 
-                    if(response.users.length > 1) {
+                    if(response.length > 1) {
                         localStorage.setItem('player_2', JSON.stringify({
-                            userId:response.users[1].id,
-                            nickName: response.users[1].nickName
+                            userId:response[1].id,
+                            nickName: response[1].nickName
                         })
                     );
                     }
-
-                    //TODO I had to do it like this because 
-                    //I could not insert the entire array of object 
-                    // into setItem and get them back with getItem
                 
                     alert('Successful!');
                     window.location.href = 'game.html';

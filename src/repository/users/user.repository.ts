@@ -13,11 +13,6 @@ export const createUser = async (payload: IUserPayload[]) => {
     return await userRepository.save(userCreated);
 }
 
-export const updateUser = async (user:User) => {
-    const userRepository = InitAppSource.getRepositoryEntityInstance(User);
-    return await userRepository.update(user.id, {...user});
-}
-
 export const getUserScores = async (id: number) => {
     const userRepository = InitAppSource.getRepositoryEntityInstance(User);
     const user = await userRepository.findOne({
