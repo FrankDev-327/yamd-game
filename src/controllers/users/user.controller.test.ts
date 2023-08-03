@@ -30,15 +30,14 @@ describe('UserController', () => {
         describe('createUser', () => {
             test('should add user to the database', async () => {
                 const payload = generateUserPayload();
-                const userData = generateUserData(payload);
+                const userData = generateUserData(payload);        
                 const spy = jest.spyOn(UserService, 'create').mockResolvedValueOnce(userData);
                 const controller = new UserController();
                 const user = await controller.createUser(payload);
-                expect(user).toMatchObject(payload);
                 expect(user).toEqual(userData);
                 expect(spy).toHaveBeenCalledWith(payload);
                 expect(spy).toHaveBeenCalledTimes(1);
-            })
+            });
         });
 
         describe('getUser', () => {
@@ -49,7 +48,7 @@ describe('UserController', () => {
                 const controller = new UserController();
                 const user = await controller.getUserById(id);
                 expect(user).toEqual(userData)
-                expect(user?.id).toBe(id)
+                expect(user[0]?.id).toBe(id);
                 expect(spy).toHaveBeenCalledWith(id)
                 expect(spy).toHaveBeenCalledTimes(1)
             });

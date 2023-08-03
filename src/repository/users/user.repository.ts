@@ -10,9 +10,7 @@ export const getAllUsers = async () => {
 export const createUser = async (payload: IUserPayload[]) => {  
     const userRepository = InitAppSource.getRepositoryEntityInstance(User);
     const userCreated = userRepository.create(payload);
-    return {
-        users: await userRepository.save(userCreated)
-    }
+    return await userRepository.save(userCreated);
 }
 
 export const updateUser = async (user:User) => {
