@@ -1,5 +1,4 @@
 import { Get, Route, Tags,  Post, Body, Path, } from "tsoa";
-import { Request } from "express";
 import { getAll, create } from "../../services/score.service";
 
 @Route("scores")

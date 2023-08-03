@@ -16,10 +16,18 @@ router.get("/", [checkJwt], async (_req, res) => {
     return res.send(response);
   });
   
-  router.get("/:id",[checkJwt],  async (req, res) => {
+  router.get("/info",[checkJwt],  async (req, res) => {
     const controller = new UserController();
-    const response = await controller.getUserById(parseInt(req.params.id));
-    if (!response) res.status(404).send({message: "No user found"})
+    const response = await controller.getUserById(req.user.id);
+    if (!response) res.status(404).send({message: "No user found"});
+    return res.send(response);
+  });
+
+    
+  router.get("/scores",[checkJwt],  async (req, res) => {
+    const controller = new UserController();
+    const response = await controller.getScores(req.user.id);
+    if (!response) res.status(404).send({message: "No scores found"});
     return res.send(response);
   });
   

@@ -12,17 +12,18 @@ export const logIn = async (payload: IAuthPayload) => {
     });
     
     if (!user) {
-        return { error: 'Invalid email or password' };
+        return { error: 'Invalid nickname or password' };
     }
 
     try {
         const isPasswordValid = await comparingPassword(payload.password, user.password);
         if (!isPasswordValid) {
-            return { error: 'Invalid email or password' };
+            return { error: 'Invalid nickname or password' };
         }
 
         const token = await generateToken(user.id);   
         return {
+            id: user.id,
             token:token
         }
         

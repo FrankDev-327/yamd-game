@@ -88,8 +88,6 @@
         <button id="registerButton" type="button">Register</button>
     </form>
     
-   
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -107,13 +105,24 @@
 
         $.ajax({
             type: 'POST',
-            contentType: "application/json",
+            dataType: "json",
             url: 'http://localhost:8000/auth', 
+            headers: {
+                "Content-Type": "application/json"
+            },
             data: JSON.stringify(formData),
             success: function(response) {
-                window.location.href = 'welcome.html';
+                localStorage.setItem('payload', JSON.stringify({
+                    token: response.token,
+                    user_id: response.id
+                }));
+                
+                console.log(localStorage.getItem('palyload'));;
+                alert('Login successful!');
+                window.location.href = 'game.html';
             },
             error: function(xhr, status, error) {
+                alert('Login was not successful!');
                 console.error(error);
             }
         });

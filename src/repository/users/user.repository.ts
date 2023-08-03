@@ -25,7 +25,7 @@ export const updateUser = async (user:User) => {
     return await userRepository.update(user.id, {...user});
 }
 
-export const getUserById = async (id: number) => {
+export const getUserScores = async (id: number) => {
     const userRepository = InitAppSource.getRepositoryEntityInstance(User);
     const user = await userRepository.findOne({
         where:{id},
@@ -36,6 +36,22 @@ export const getUserById = async (id: number) => {
         'updatedDated'
         ],
         relations: ['scores']
+    });
+    
+    if (!user) return null
+    return user
+}
+
+export const getUserById = async (id: number) => {
+    const userRepository = InitAppSource.getRepositoryEntityInstance(User);
+    const user = await userRepository.findOne({
+        where:{id},
+        select:[
+        'id', 
+        'nickName',
+        'createdDate',
+        'updatedDated'
+        ],
     });
     
     if (!user) return null
