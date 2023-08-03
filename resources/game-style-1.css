@@ -1,0 +1,125 @@
+header {
+	margin: 0 0 0 40px;
+	padding: 0;
+	width: 100%;
+	font-family: 'Roboto', sans-serif;
+	color: white;
+}
+
+h1 {
+	font-size: 60px;
+	color: black;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+#roundCounter {
+	display: block;
+	text-align: left;
+	font-size: 17px;
+	font: bold;
+	color: black;
+}
+
+
+
+/**********************************************************
+LEFT DIV
+**********************************************************/
+
+.lrDiv {
+	display: inline-block;
+	width: 40%;
+	margin: 2.5%;
+}
+
+button {
+	display: inline-block;
+	vertical-align: top;
+	padding: 1%;
+	margin: 1%;
+}
+
+button:focus {
+	outline: 0;
+}
+
+.dice {
+	font-size: 130%;
+	padding: .75em 1em;
+}
+
+[title~="Rerolling"] {
+	background-color: yellow;
+	color: black;
+	border-style: outset;
+}
+
+[title~="Keeping"] {
+	background-color: #CCCC00;
+	color: white;
+	border-style: inset;
+}
+
+.rollScoreButtons {
+	
+}
+
+.highScore {
+	width: 50%;
+	border: solid 1px black;
+	border-radius: 5px;
+	background-color: #888;
+	padding-top: 0;
+}
+
+
+/*************************************************
+SCORECARD
+*************************************************/
+
+table {
+	vertical-align: top;
+}
+
+th {
+	padding: 5px;
+	text-align: center;
+}
+
+.scorecard {
+	background-color: #ffea54;
+	text-align: center;
+}
+
+.scorecard td {
+	border: 1px solid black;
+}
+
+.scorecard th {
+	border: 2px solid black;
+	background-color: #ffe100;
+}
+
+.scorecard:nth-child(even) {
+	background-color: #fff08c;
+}
+
+.header {
+	width: 100%;
+}
+
+.radiotext {
+	margin: 2% 1%;
+}
+
+#lrDiv {
+	margin-left: -280px;
+}
+
+#llDiv {
+  margin-right: 0px;
+  margin-left: auto;
+}

@@ -9,8 +9,16 @@ socket.on('disconnect', () => {
 });
 
 function populateTable(data) {
-    document.querySelector('#score-table tbody')
-    .insertAdjacentHTML('afterend', createTableRow(data));
+    if(data.user.playerNumber == 1) {
+        document.querySelector('#score-table tbody')
+        .insertAdjacentHTML('afterend', createTableRow(data));
+    }
+
+    if(data.user.playerNumber == 2) {
+        document.querySelector('#score-table-2 tbody')
+        .insertAdjacentHTML('afterend', createTableRow(data));
+    }
+  
 }
 
 function createTableRow(score) {

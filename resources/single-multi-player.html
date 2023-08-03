@@ -100,10 +100,16 @@
             $('#playerForm').submit(function(event) {
                 event.preventDefault();
                 const formData = []
-                formData.push({ nickName: $('#player1').val()});
+                formData.push({ 
+                    nickName: $('#player1').val(),
+                    playerNumber: 1
+                });
 
-                if ($('#multiplayer').is(':checked')) {
-                    formData.push({ nickName: $('#player2').val()});
+                if ($('#multiplayer').is(':checked') && $('#player2').val() !== '') {
+                    formData.push({ 
+                        nickName: $('#player2').val(),
+                        playerNumber: 2
+                    });
                 }
 
             $.ajax({
@@ -128,11 +134,14 @@
                         })
                     );
 
-                    localStorage.setItem('player_2', JSON.stringify({
+                    if(response.users.length > 1) {
+                        localStorage.setItem('player_2', JSON.stringify({
                             userId:response.users[1].id,
                             nickName: response.users[1].nickName
                         })
                     );
+                    }
+
                     //TODO I had to do it like this because 
                     //I could not insert the entire array of object 
                     // into setItem and get them back with getItem

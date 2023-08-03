@@ -44,6 +44,7 @@ export const getUserById = async (id: number) => {
         select:[
         'id', 
         'nickName',
+        'playerNumber',
         'createdDate',
         'updatedDated'
         ],

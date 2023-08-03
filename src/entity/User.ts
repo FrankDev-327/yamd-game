@@ -8,6 +8,11 @@ export class User extends BaseModelEntity {
     @Column({nullable: true})
     nickName: string
 
+    @Column({
+        nullable: true
+    })
+    playerNumber: number
+
     @OneToMany(() =>  Scores, (scores) => scores.user, {
         nullable: true
     })

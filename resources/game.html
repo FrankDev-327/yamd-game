@@ -3,142 +3,9 @@
 	<head>
 		<title>Yahtzee!</title>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="game-style-1.css">
+		<link rel="stylesheet" href="game-style-2.css">
     <style>
-      /*
-Fix "scorecard" to go across the whole table -- format too
-Center buttons within div
-expand table and td to fit into lrDiv
-*/
-
-/*
-HTML
-Consolidate onto one tbody
-*/
-
-/*************************************************
-GENERAL
-*************************************************/
-
-header {
-	margin: 0 0 0 40px;
-	padding: 0;
-	width: 100%;
-	font-family: 'Roboto', sans-serif;
-	color: white;
-}
-
-h1 {
-	font-size: 60px;
-	color: black;
-}
-
-body {
-	font-family: 'Roboto', sans-serif;
-/* 	background: #8e0000;
-    background: -webkit-linear-gradient(left, #420000, #c60000);
-    background: -o-linear-gradient(right, #420000, #c60000);
-    background: -moz-linear-gradient(right, #420000, #c60000);
-    background: linear-gradient(to right, #420000, #c60000); */
-}
-
-#roundCounter {
-	display: block;
-	text-align: left;
-	font-size: 17px;
-	font: bold;
-	color: black;
-}
-
-
-
-/**********************************************************
-LEFT DIV
-**********************************************************/
-
-.lrDiv {
-	display: inline-block;
-	width: 40%;
-	margin: 2.5%;
-}
-
-button {
-	display: inline-block;
-	vertical-align: top;
-	padding: 1%;
-	margin: 1%;
-}
-
-button:focus {
-	outline: 0;
-}
-
-.dice {
-	font-size: 130%;
-	padding: .75em 1em;
-}
-
-[title~="Rerolling"] {
-	background-color: yellow;
-	color: black;
-	border-style: outset;
-}
-
-[title~="Keeping"] {
-	background-color: #CCCC00;
-	color: white;
-	border-style: inset;
-}
-
-.rollScoreButtons {
-	
-}
-
-.highScore {
-	border: solid 1px black;
-	border-radius: 5px;
-	background-color: #888;
-	padding-top: 0;
-}
-
-
-/*************************************************
-SCORECARD
-*************************************************/
-
-table {
-	vertical-align: top;
-}
-
-th {
-	padding: 5px;
-	text-align: center;
-}
-
-.scorecard {
-	background-color: #ffea54;
-	text-align: center;
-}
-
-.scorecard td {
-	border: 1px solid black;
-}
-
-.scorecard th {
-	border: 2px solid black;
-	background-color: #ffe100;
-}
-
-.scorecard:nth-child(even) {
-	background-color: #fff08c;
-}
-
-.header {
-	width: 100%;
-}
-
-.radiotext {
-	margin: 2% 1%;
-}
     </style>
 	</head>
 	<header>
@@ -148,6 +15,7 @@ th {
 		</div>
 	</header>
 	<body>
+		<!-- Player 1 table -->
 		<div class="lrDiv">
 			<div class="dice">
 				<button class="dice" title="Rerolling">d1</button>
@@ -164,7 +32,8 @@ th {
 				<h2 id='highScore'></h2>
 			</fieldset>
 			<br>
-			  <!-- The new table starts here -->
+<!-- The new table starts here -->
+
   <table id="score-table">
     <thead>
       <tr>
@@ -177,7 +46,9 @@ th {
     </tbody>
   </table>
 		</div>
-		<table class="lrDiv">
+
+
+		<table class="lrDiv" id ="lrDiv">
 			<thead>
 				<tr class="scorecard" class="header">
 					<th colspan="4">Scorecard</th>
@@ -584,10 +455,458 @@ th {
 				</form>
 			</tbody>
 		</table>
+<!-- Player 1 table -->
 
+
+<!-- Player 2 table -->
+<div class="llDiv" id="dice_button">
+	<div class="dice2">
+		<button class="dice2" title="Rerolling">d1</button>
+		<button class="dice2" title="Rerolling">d2</button>
+		<button class="dice2" title="Rerolling">d3</button>
+		<button class="dice2" title="Rerolling">d4</button>
+		<button class="dice2" title="Rerolling">d5</button>
+	</div>
+	<div class="rollScoreButtons">
+		<button type="button" id="rollButton2">Roll Button</button>
+		<button type="button" id="scoreButton2">Score Now</button>
+	</div>
+	<fieldset class="highScore2">
+		<h2 id='highScore2'></h2>
+	</fieldset>
+	<br>
+
+	<!-- Player 2 table -->
+
+<table id="score-table-2">
+<thead>
+<tr>
+<th>#</th>
+<th>Upper/Lower</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+
+<table class="llDiv" id ="llDiv">
+	<thead>
+		<tr class="scorecard2" class="header">
+			<th colspan="4">Scorecard</th>
+		</tr>
+	</thead>
+	<tbody>
+		<form>
+		<tr class="scorecard2" class="header2" id="upper">
+			<td>
+				<div class="radiotext2">
+					<label>Upper</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Rule</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Scoring</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Points</label>
+				</div>
+			</td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="one">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Aces</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Sum of ones</label>
+				</div>
+			</td>
+			<td></td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="two">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Twos</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Sum of twos</label>
+				</div>
+			</td>
+			<td></td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="three">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Threes</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Sum of threes</label>
+				</div>
+			</td>
+			<td></td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="four">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Fours</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Sum of fours</label>
+				</div>
+			</td>
+			<td></td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="five">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Fives</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Sum of fives</label>
+				</div>
+			</td>
+			<td></td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="six">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Sixes</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Sum of sixes</label>
+				</div>
+			</td>
+			<td></td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="roundCounter">
+					<label> </label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>If 63+ scored</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>35 bonus points</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label id="bonus2"> </label>
+				</div>
+			</td>
+		</tr>
+		<tr class="scorecard2" class="score" id="upperScore2">
+			<td>
+				<div class="roundCounter">
+					<label>Upper Score</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label> </label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label> </label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>0</label>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr class="scorecard2" class="header2" id="lower">
+			<td>
+				<div class="roundCounter">
+					<label>Lower</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Rule</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Scoring</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Points</label>
+				</div>
+			</td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="threeOAK">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Three of a Kind</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Sum of all dice</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label></label>
+				</div>
+			</td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="fourOAK">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Four of a Kind</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Sum of all dice</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label></label>
+				</div>
+			</td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="fullHouse">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Full House</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>25 points</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label></label>
+				</div>
+			</td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="sStraight">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Small Straight</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>30 points</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label></label>
+				</div>
+			</td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="lStraight">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Large Straight</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>40 points</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label></label>
+				</div>
+			</td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="yahtzee">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Yahtzee</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>First: 50, After: 100</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label></label>
+				</div>
+			</td>
+		</tr>
+		<tr class="scorecard2">
+			<td>
+				<div class="radio">
+					<input type="radio" name="optradio" id="chance">
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Chance</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>Sum of all dice</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label></label>
+				</div>
+			</td>
+		</tr>
+		<tr class="scorecard2" class="score" id="lowerScore2">
+			<td>
+				<div class="roundCounter">
+					<label>Lower Score</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label></label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label></label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>0</label>
+				</div>
+			</td>
+		</tr>
+		<tr class="scorecard2" class="score" id="totalScore2">
+			<td>
+				<div class="roundCounter">
+					<label>Total Score</label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label></label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label></label>
+				</div>
+			</td>
+			<td>
+				<div class="roundCounter">
+					<label>0</label>
+				</div>
+			</td>
+			</tr>
+		</form>
+	</tbody>
+</table>
+
+		
 		<script src="https://cdn.socket.io/4.2.0/socket.io.js"></script>
 		<script src="socket.client.js"></script>
 		<script src="game.js"></script>
+		<script src="game-2.js"></script> 
+		
+	<script>
 
+	</script>
 	</body>
 </html>

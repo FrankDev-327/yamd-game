@@ -1,10 +1,9 @@
 import { faker } from '@faker-js/faker';
 
-export function generateUserData(override = []) {
+export function generateUserData(override = {}) {
     return [
         {
             nickName: faker.person.firstName(),
-            ...override
         }
     ];
 }

@@ -1,32 +1,18 @@
-const yahtzee = (function () {
+const yahtzee2 = (function () {
 
     const player2 = JSON.parse(localStorage.getItem('player_2'));
-    const roundCounter = document.querySelector('#roundCounter');
-    const diceDiv = document.querySelector('.dice');
+    const diceDiv = document.querySelector('.dice2');
     const diceButtons = Array.from(diceDiv.children);
-    const rollButton = document.querySelector('#rollButton');
+    const rollButton = document.querySelector('#rollButton2');
     const scoreButton = rollButton.nextElementSibling;
     const highScore = scoreButton.parentNode.nextElementSibling.firstElementChild;
     const radioInput = document.querySelectorAll('input');
     const radioYahtzee = radioInput[11];
-    const upperScore = document.querySelector('#upperScore').lastElementChild;
-    const lowerScore = document.querySelector('#lowerScore').lastElementChild;
-    const totalScore = document.querySelector('#totalScore').lastElementChild;
-    const bonus = document.getElementById('bonus');
-
-    if(player2 === null) {
-      const dices = document.getElementById("dice_button");
-      const socresUser = document.getElementById("score-table-2");
-      socresUser.style.display = "none";
-      dices.style.display = "none";
-    }
-  
-    const clearLocalStorageOnRefresh = () => {
-      localStorage.clear();
-    }
-
-    window.addEventListener('beforeunload', clearLocalStorageOnRefresh);
-  
+    const upperScore = document.querySelector('#upperScore2').lastElementChild;
+    const lowerScore = document.querySelector('#lowerScore2').lastElementChild;
+    const totalScore = document.querySelector('#totalScore2').lastElementChild;
+    const bonus = document.getElementById('bonus2');
+ 
     let dice = [];
     let rollsLeft = 2;
     let round = 0;
@@ -49,29 +35,29 @@ const yahtzee = (function () {
       if (rollsLeft > 0) {
         reroll();
         rollsLeft--;
-        printRollButton();
+        printRollButton2();
       };
     });
   
     scoreButton.addEventListener('click', function () {
       if (this.textContent === 'Score Now') {
-        let element = scrollInput();
+        let element = scrollInput2();
         if (!element) {
           alert('Please choose a scoring option.');
         } else {
           score[element.id]();
           printTableRow(element);
-          if (element.id !== 'yahtzee') newRound();
+          if (element.id !== 'yahtzee') newRound2();
         };
       } else {
         highScore.textContent = '';
-        newGame();
+        newGame2();
       }
     });
     
     const d = () => Math.floor(Math.random() * 6) + 1;
   
-    const firstRoll = () => {
+    const firstRoll2 = () => {
       dice = [];
       if (radioYahtzee.disabled = true) {
         radioYahtzee.disabled = false;
@@ -83,7 +69,7 @@ const yahtzee = (function () {
       };
   
       dice.sort();
-      printDice();
+      printDice2();
     };
   
     const reroll = () => {
@@ -93,11 +79,11 @@ const yahtzee = (function () {
         };
       };
   
-      printDice();
+      printDice2();
     };
   
-    const newRound = () => {
-      printScoreSums();
+    const newRound2 = () => {
+      printScoreSums2();
       round++;
   
       if (round > 3) {
@@ -105,13 +91,13 @@ const yahtzee = (function () {
         scoreButton.textContent = 'Play Again?';
       } else {
         rollsLeft = 2;
-        printRound();
-        printRollButton();
-        firstRoll();
+        printRound2();
+        printRollButton2();
+        firstRoll2();
       };
     };
   
-    const scrollInput = () => {
+    const scrollInput2 = () => {
       for (let i = 0; i < radioInput.length; i++) {
         if (radioInput[i].checked) {
           const radio = radioInput[i];
@@ -120,16 +106,16 @@ const yahtzee = (function () {
       };
     };
   
-    const printRound = () => roundCounter.textContent = `Round ${round} of 13`;
-    const printRollButton = () => rollButton.textContent = `${rollsLeft} rolls left`;
+    const printRound2 = () => roundCounter.textContent = `Round ${round} of 13`;
+    const printRollButton2 = () => rollButton.textContent = `${rollsLeft} rolls left`;
   
-    const printDice = () => {
+    const printDice2 = () => {
       for (let i = 0; i < 5; i++) {
         diceButtons[i].textContent = dice[i];
       };
     };
   
-    const disableRadio = radio => {
+    const disableRadio2 = radio => {
       radio.checked = false;
       if (radio.id == 'yahtzee' && lowerScores.yahtzee > 0) {
         return;
@@ -138,7 +124,7 @@ const yahtzee = (function () {
       radio.disabled = true;
     };
   
-    const printScore = (element, tr) => {
+    const printScore2 = (element, tr) => {
       if (upperScores[element.id] || upperScores[element.id] === 0) {
         tr.lastElementChild.textContent = upperScores[element.id];
       } else if (lowerScores[element.id] || lowerScores[element.id] === 0) {
@@ -148,11 +134,11 @@ const yahtzee = (function () {
   
     const printTableRow = radio => {
       let tr = radio.parentNode.parentNode.parentNode;
-      disableRadio(radio);
-      printScore(radio, tr);
+      disableRadio2(radio);
+      printScore2(radio, tr);
     };
   
-    const printScoreSums = () => {
+    const printScoreSums2 = () => {
       getTotals();
       upperScore.textContent = total.upper;
       lowerScore.textContent = total.lower;
@@ -210,7 +196,7 @@ const yahtzee = (function () {
     const scoreYahtzee = () => {
       if (!lowerScores.yahtzee) {
         lowerScores.yahtzee = 50;
-        newRound();
+        newRound2();
       } else {
         lowerScores.yahtzee += 100;
         radioYahtzee.disabled = true;
@@ -281,10 +267,10 @@ const yahtzee = (function () {
       total.lower = addScore(lowerScores);
       total.total = total.upper + total.lower;
       if(round >= 3) {
-        const player1 = JSON.parse(localStorage.getItem('player_1'))
+        
         const userInfoScore = {
             total_score: total.total,
-            userId: player1.userId,
+            userId: player2.userId,
             category: categoryTotal
         }
 
@@ -292,7 +278,7 @@ const yahtzee = (function () {
       }
     };
   
-    const newGame = () => {
+    const newGame2 = () => {
       dice = [];
       rollsLeft = 2;
       round = 0;
@@ -303,20 +289,20 @@ const yahtzee = (function () {
   
       scoreButton.textContent = 'Score Now';
       bonus.textContent = '';
-      printScoreSums();
+      printScoreSums2();
       for (let i = 0; i < radioInput.length; i++) {
         radioInput[i].disabled = false;
         radioInput[i].parentNode.parentNode.parentNode.lastElementChild.textContent = '';
       }
   
-      newRound();
+      newRound2();
     };
   
     return {
-      init: newRound,
+      init_game_1: newRound2,
     };
   
   })();
+    
   
-  yahtzee.init();
-  
+yahtzee2.init_game_1();

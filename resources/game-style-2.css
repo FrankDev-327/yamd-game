@@ -1,0 +1,90 @@
+
+/**********************************************************
+LEFT DIV
+**********************************************************/
+
+.llDiv {
+	display: inline-block;
+	width: 40%;
+	margin: 2.5%;
+}
+
+button {
+	display: inline-block;
+	vertical-align: top;
+	padding: 1%;
+	margin: 1%;
+}
+
+button:focus {
+	outline: 0;
+}
+
+.dice2 {
+	font-size: 130%;
+	padding: .75em 1em;
+}
+
+[title~="Rerolling"] {
+	background-color: yellow;
+	color: black;
+	border-style: outset;
+}
+
+[title~="Keeping"] {
+	background-color: #CCCC00;
+	color: white;
+	border-style: inset;
+}
+
+.rollScoreButtons {
+	
+}
+
+.highScore2 {
+	width: 50%;
+	border: solid 1px black;
+	border-radius: 5px;
+	background-color: #888;
+	padding-top: 0;
+}
+
+
+/*************************************************
+SCORECARD
+*************************************************/
+
+table {
+	vertical-align: top;
+}
+
+th {
+	padding: 5px;
+	text-align: center;
+}
+
+.scorecard2 {
+	background-color: #ffea54;
+	text-align: center;
+}
+
+.scorecard2 td {
+	border: 1px solid black;
+}
+
+.scorecard2 th {
+	border: 2px solid black;
+	background-color: #ffe100;
+}
+
+.scorecard2:nth-child(even) {
+	background-color: #fff08c;
+}
+
+.header {
+	width: 100%;
+}
+
+.radiotext2 {
+	margin: 2% 1%;
+}
