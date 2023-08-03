@@ -2,22 +2,17 @@ import { User } from "../../entity/User";
 import { IUserPayload } from "../../interfaces/user.interface";
 import { InitAppSource } from "../../init-db/init.db";
 
-
 export const getAllUsers = async () => {
     const userRepository = InitAppSource.getRepositoryEntityInstance(User);
     return await userRepository.find();
 }
 
-export const createUser = async (payload: IUserPayload) => {
+export const createUser = async (payload: IUserPayload[]) => {  
     const userRepository = InitAppSource.getRepositoryEntityInstance(User);
-    const userEntity = new User(); 
-    const userCreated = userRepository.create({
-        ...userEntity,
-        ...payload
-    });
-
-    const userInserted = await userRepository.save(userCreated);
-    return await getUserById(userInserted.id)
+    const userCreated = userRepository.create(payload);
+    return {
+        users: await userRepository.save(userCreated)
+    }
 }
 
 export const updateUser = async (user:User) => {

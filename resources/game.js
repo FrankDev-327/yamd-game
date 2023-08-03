@@ -269,10 +269,10 @@ const yahtzee = (function () {
       total.lower = addScore(lowerScores);
       total.total = total.upper + total.lower;
       if(round >= 3) {
-        const { user_id } = localStorage.getItem('payload');
+        const player1 = JSON.parse(localStorage.getItem('player_1'))
         const userInfoScore = {
             total_score: total.total,
-            userId: user_id,
+            userId: player1.userId,
             category: categoryTotal
         }
 

@@ -1,11 +1,12 @@
 import { faker } from '@faker-js/faker';
 
-export function generateUserData(override = {}) {
-    return {
-        nickName: faker.person.firstName(),
-        password: "123456789",
-        ...override
-    }
+export function generateUserData(override = []) {
+    return [
+        {
+            nickName: faker.person.firstName(),
+            ...override
+        }
+    ];
 }
 
 export function generateUsersData(n: number= 1 ) {
@@ -19,6 +20,5 @@ export function generateUsersData(n: number= 1 ) {
 export function generateUserPayload() {
     return {
         nickName: faker.person.firstName(),
-        password: "123456789",
     }
   }

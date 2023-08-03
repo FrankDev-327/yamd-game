@@ -8,17 +8,14 @@ export class User extends BaseModelEntity {
     @Column({nullable: true})
     nickName: string
 
-    @Column({nullable: true})
-    password: string
-
     @OneToMany(() =>  Scores, (scores) => scores.user, {
         nullable: true
     })
     @JoinColumn({name: 'score_id'})
     scores: Scores[];
 
-    @BeforeInsert()
+/*     @BeforeInsert()
     async hashingPassword() {
         this.password = await hashingPass(this.password);
-    }
+    } */
 }

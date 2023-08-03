@@ -7,6 +7,7 @@ import {Request, Response} from 'express';
 import * as swaggerUi from "swagger-ui-express";
 import { InitAppSource } from "./init-db/init.db";
 import Router from './routes';
+import * as cors from 'cors';
 import { createServer } from "http";
 import { Websocket } from "./socket/webscoket";
 import { GameSocket } from "./socket/game.socket";
@@ -14,6 +15,7 @@ import { GameSocket } from "./socket/game.socket";
 const PORT = process.env.PORT_SERVER || 8000;
 const app: Application = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(express.static("public"));

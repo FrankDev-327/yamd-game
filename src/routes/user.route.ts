@@ -10,7 +10,7 @@ router.get("/", [checkJwt], async (_req, res) => {
     return res.send(response);
   });
   
-  router.post("/", async (req, res) => {
+  router.post("/", [checkJwt], async (req, res) => {
     const controller = new UserController();
     const response = await controller.createUser(req.body);
     return res.send(response);

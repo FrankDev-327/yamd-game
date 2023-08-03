@@ -6,7 +6,7 @@ export const getAll = async () => {
     return await getAllUsers();
 }
 
-export const create = async (payload: IUserPayload) => {
+export const create = async (payload: IUserPayload[]) => {
     return await createUser(payload);
 }
 

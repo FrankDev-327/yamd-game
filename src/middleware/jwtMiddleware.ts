@@ -1,7 +1,4 @@
 import { Request, Response, NextFunction } from "express";
-import { decodeToken } from "../jwt-token/encode.payload";
-import { create, getByToken } from "../services/token.service";
-
 declare module 'express' {
     interface Request {
       user?: any; 
@@ -15,9 +12,7 @@ export const checkJwt = async (req: Request, res: Response, next: NextFunction) 
         });
     }
 
-    let payload;
-    const token  = <string>req.headers.authorization.replace(/['"]+/g, '');
-    const existingToken = await getByToken(token);
+    const token  = <string>req.headers.authorization;
 
     //TODO this statement was just to test
 /*     if(existingToken) {
@@ -30,10 +25,9 @@ export const checkJwt = async (req: Request, res: Response, next: NextFunction) 
     } */
 
     try {
-        payload = await decodeToken(token);
-        if(payload.exp <= 60000) {
+        if(token !== process.env.SERET_SOCKET_KEY) {
             return res.status(403).json({
-                message: 'Token has expired'
+                message: 'Invalid token'
              });
         }
         
@@ -41,6 +35,5 @@ export const checkJwt = async (req: Request, res: Response, next: NextFunction) 
         return res.status(401).send({message: 'Invalid token'});
     }
 
-    req.user = payload;    
     next();
 }
