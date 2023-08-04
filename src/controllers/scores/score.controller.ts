@@ -1,4 +1,5 @@
-import { Get, Route, Tags,  Post, Body, Path, } from "tsoa";
+import { Get, Route, Tags,  Post, Body, } from "tsoa";
+import { IScorePayload } from "../../interfaces/score.interface";
 import { getAll, create } from "../../services/score.service";
 
 @Route("scores")
@@ -10,7 +11,7 @@ export default class ScoreController {
     }
 
     @Post()
-    async createUser(@Body() body) {
+    async createUser(@Body() body: IScorePayload) {
         return await create(body);
     }
 }

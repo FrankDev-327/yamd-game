@@ -257,8 +257,8 @@ const yahtzee2 = (function () {
     const getTotals = () => {
       let categoryTotal = "Lower"
       total.upper = addScore(upperScores);
-      if (total.upper >= 63 && !upperScores.bonus) {
-        upperScores.bonus = 35;
+      if (total.upper >= 15 && !upperScores.bonus) {
+        upperScores.bonus = 7;
         bonus.textContent = upperScores.bonus;
         total.upper = addScore(upperScores);
         categoryTotal = "Upper";

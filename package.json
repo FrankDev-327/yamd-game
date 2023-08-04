@@ -33,6 +33,7 @@
       "reflect-metadata": "^0.1.13",
       "socket.io": "^4.7.1",
       "socket.io-client": "^4.7.1",
+      "swagger-jsdoc": "^6.2.8",
       "swagger-ui-express": "^5.0.0",
       "tsoa": "^5.1.1",
       "typeorm": "0.3.17"
@@ -43,10 +44,7 @@
       "start:dev": "ts-node src/index.ts",
       "start": "node build/index.js",
       "typeorm": "typeorm-ts-node-commonjs",
-      "predev": "npm run swagger",
-      "prebuild": "npm run swagger",
       "build": "tsc",
-      "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec\"",
-      "swagger": "tsoa spec"
+      "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec\""
    }
 }

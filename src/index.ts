@@ -11,6 +11,7 @@ import * as cors from 'cors';
 import { createServer } from "http";
 import { Websocket } from "./socket/webscoket";
 import { GameSocket } from "./socket/game.socket";
+import specs from "./swagger-doc/swaggerDoc";
 
 const PORT = process.env.PORT_SERVER || 8000;
 const app: Application = express();
@@ -20,15 +21,7 @@ app.use(express.json());
 app.use(morgan("tiny"));
 app.use(express.static("public"));
 
-app.use(
-  "/docs",
-  swaggerUi.serve,
-  swaggerUi.setup(undefined, {
-    swaggerOptions: {
-      url: "/swagger.json",
-    },
-  })
-);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs));
   
 app.use(Router);
 app.get( "/test", (req: Request, res: Response ) => {

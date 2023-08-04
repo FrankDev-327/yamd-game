@@ -1,11 +1,12 @@
-import { Get, Route, Tags,  Post, Body } from "tsoa";
+import { Get, Route, Tags, Post, Body, Path } from "tsoa";
+import { IUserPayload } from "../../interfaces/user.interface";
 import { getAll, getById, create, getScores } from "../../services/user.service";
 
-@Route("users")
-@Tags("User")
+@Route("players")
+@Tags("Players")
 export default class UserController {
     @Post()
-    async createUser(@Body() body) {      
+    async createUser(@Body() body: IUserPayload[]) {      
         return await create(body);
     }
     
@@ -14,13 +15,13 @@ export default class UserController {
         return await getAll();
     }
 
-    @Get("/info")
-    async getUserById(id: number) {
+    @Get("/:id")
+    async getUserById(@Path() id: number) {
         return await getById(id);
     }
 
-    @Get("/scores")
-    async getScores(id: number) {
+    @Get("/scores/:id")
+    async getScores(@Path() id: number) {
         return await getScores(id);
     }
 }

@@ -120,7 +120,7 @@ const yahtzee = (function () {
       };
     };
   
-    const printRound = () => roundCounter.textContent = `Round ${round} of 13`;
+    const printRound = () => roundCounter.textContent = `Round ${round} of 3`;
     const printRollButton = () => rollButton.textContent = `${rollsLeft} rolls left`;
   
     const printDice = () => {
@@ -271,8 +271,8 @@ const yahtzee = (function () {
     const getTotals = () => {
       let categoryTotal = "Lower"
       total.upper = addScore(upperScores);
-      if (total.upper >= 63 && !upperScores.bonus) {
-        upperScores.bonus = 35;
+      if (total.upper >= 15 && !upperScores.bonus) {
+        upperScores.bonus = 7;
         bonus.textContent = upperScores.bonus;
         total.upper = addScore(upperScores);
         categoryTotal = "Upper";
