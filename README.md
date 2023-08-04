@@ -31,3 +31,6 @@ To play, you have to go to resources, and then click on `single-multi-player.htm
 ## Test
 To be able to run some tests, just copy this command into the terminal `pnpm run test:unit` or `npm run test:unit`.
 If you want to see more information about the test, you can add the flag at the end `--coverage`
+
+## Swagger
+Through this url `http://localhost:8000/docs/#/` you are going to have access to the swagger view
