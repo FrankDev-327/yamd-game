@@ -25,7 +25,7 @@ export const checkJwt = async (req: Request, res: Response, next: NextFunction) 
     } */
 
     try {
-        if(token !== process.env.SERET_SOCKET_KEY) {
+        if(token !== process.env.SERET_KEY) {
             return res.status(403).json({
                 message: 'Invalid token'
              });
