@@ -9,6 +9,8 @@ socket.on('disconnect', () => {
 });
 
 function populateTable(data) {
+    //TODO according the player's number, 
+    // the table is going to be populated
     if(data.user.playerNumber == 1) {
         document.querySelector('#score-table tbody')
         .insertAdjacentHTML('afterend', createTableRow(data));
