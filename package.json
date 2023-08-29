@@ -40,7 +40,7 @@
    },
    "scripts": {
       "test": "jest",
-      "test:unit": "ENV_FILE=./.env.test jest",
+      "test:unit": "ENV_FILE=./.env.test.example jest",
       "start:dev": "ts-node src/index.ts",
       "start": "node build/index.js",
       "typeorm": "typeorm-ts-node-commonjs",
